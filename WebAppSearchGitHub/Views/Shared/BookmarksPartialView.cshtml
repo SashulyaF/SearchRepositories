@@ -1,0 +1,36 @@
+﻿@model WebAppSearchGitHub.Models.GitHubRepositoriesModel
+
+<div id="bookmarks">
+@if (Model.BookmarksExists)
+{
+    <hr class="mt-2 mb-5">
+    <div class="row">
+        <button type="button" class="btn btn-primary btn-bookmark">
+            @Ajax.ActionLink("Clean all bookmarks", "CleanAllBookmarks", new AjaxOptions { UpdateTargetId = "bookmarks", HttpMethod = "POST" })
+        </button>
+    </div>
+}
+
+<hr class="mt-2 mb-5">
+<div class="row text-center text-lg-left">
+    @if (Model.BookmarksExists)
+    {
+        foreach (var repos in @Model._repositories)
+        {
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <a class="btn btn-default repos-info-name" role="button" href="@repos.RepositoryUrl">@repos.RepositoryName</a>
+                    <a href="@repos.OwnerGitHubUrl">
+                        <img src="@repos.OwnerImageUrl" style="width:100%">
+                    </a>
+                    <button type="button" class="btn btn-primary btn-bookmark">
+                        @Ajax.ActionLink("Clean bookmark", "CleanBookmark", new { repositoryId = repos.RepositoryID }, new AjaxOptions { UpdateTargetId = "bookmarks" })
+                    </button>
+                </div>
+            </div>
+        }
+    }
+</div>
+</div>
+
+

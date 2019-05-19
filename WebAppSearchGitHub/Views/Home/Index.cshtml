@@ -1,0 +1,40 @@
+﻿@model WebAppSearchGitHub.Models.GitHubRepositoriesModel
+@{
+    ViewBag.Title = "GitHub Repositories";
+}
+
+<div class="container page-container">
+    <br />
+    <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">GitHub Repositories</h1>
+    <hr class="mt-2 mb-5">
+    <br />
+    @using (Html.BeginForm("IndexAsync", "Home", FormMethod.Get))
+    {              
+
+        <div class="input-group">
+            @Html.TextBox("searchParams", null, new { @id="srch", @class = "form-control", @placeholder = "Search for..." })
+            <span class="input-group-btn"><input type="submit" value="search" class="btn btn-info"/></span>
+        </div>
+    }
+
+    <hr class="mt-2 mb-5">
+    <div class="row text-center text-lg-left">
+        @if (Model._repositories.Count > 0)
+        {
+            foreach (var repos in @Model._repositories)
+            {
+                <div class="col-md-3">
+                    <div class="thumbnail">                       
+                        <a class="btn btn-default repos-info-name" title="@repos.RepositoryName" role="button" href="@repos.RepositoryUrl">@repos.RepositoryName</a>
+                        <a href="@repos.OwnerGitHubUrl">
+                            <img src="@repos.OwnerImageUrl" style="width:100%">
+                        </a>
+                        <button type="button" class="btn btn-primary btn-add-bookmark" hidden>
+                            @Ajax.ActionLink("Add To Bookmarks", "AddToBookmarks", new { repositoryId = repos.RepositoryID }, new AjaxOptions { HttpMethod = "POST"})
+                        </button>
+                    </div>
+                </div>   
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.body {
+    min-height: 450px !important;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* selected link */
+a:active {
+    text-decoration-line:underline;
+}
+
+.btn-bookmark a {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.btn-add-bookmark a {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.repos-info-name {
+    font-weight: bold !important;
+    width: 100% !important;
+    border-color:darkcyan !important;
+}
+
+.input-group {
+    display: inline-flex !important;
+}
+
+.error {
+    text-align: center;
+}
+
+.thumbnail a{
+    overflow: hidden !important;
+}
