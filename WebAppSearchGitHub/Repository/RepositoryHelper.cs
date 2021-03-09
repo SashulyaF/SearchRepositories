@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using System.Web;
 using WebAppSearchGitHub.Models;
 
 namespace WebAppSearchGitHub.Repository
@@ -23,17 +20,14 @@ namespace WebAppSearchGitHub.Repository
         #region private functions
 
         /// <summary>    
-        /// load a list of repositories by search params from github.    
+        /// Fetch a list of repositories by search params from github    
         /// </summary>  
-        private static async Task<List<GitHubReposModel>> FillDataC(string searchParams = "")
+        private static async Task<List<GitHubReposModel>> FillData(string searchParams = "")
         {
             List<GitHubReposModel> repositories = new List<GitHubReposModel>();
 
             try
             {
-                // check searchparams
-                // if searchParams is not empty: load data from hitHub
-                // if searchParams is empty return empty list
                 if (!string.IsNullOrEmpty(searchParams))
                 {
                     ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
@@ -68,9 +62,8 @@ namespace WebAppSearchGitHub.Repository
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                // return empty list of repositories
                 return repositories;
             }
             return repositories;
@@ -80,7 +73,7 @@ namespace WebAppSearchGitHub.Repository
         #region public functions
         public static async Task<List<GitHubReposModel>> GetRepositoriesAsync(string searchParams = "")
         {
-            return await FillDataC(searchParams);
+            return await FillData(searchParams);
         }
 
         #endregion

@@ -58,3 +58,7 @@ a:active {
 .thumbnail a{
     overflow: hidden !important;
 }
+
+.thumbnail-owner-image{
+    width:98%;
+}

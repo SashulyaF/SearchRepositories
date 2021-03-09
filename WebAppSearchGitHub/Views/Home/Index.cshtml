@@ -19,7 +19,7 @@
 
     <hr class="mt-2 mb-5">
     <div class="row text-center text-lg-left">
-        @if (Model._repositories.Count > 0)
+        @if (Model.IsBookmarksExists)
         {
             foreach (var repos in @Model._repositories)
             {
@@ -27,7 +27,7 @@
                     <div class="thumbnail">                       
                         <a class="btn btn-default repos-info-name" title="@repos.RepositoryName" role="button" href="@repos.RepositoryUrl">@repos.RepositoryName</a>
                         <a href="@repos.OwnerGitHubUrl">
-                            <img src="@repos.OwnerImageUrl" style="width:100%">
+                            <img src="@repos.OwnerImageUrl" class="thumbnail-owner-image">
                         </a>
                         <button type="button" class="btn btn-primary btn-add-bookmark" hidden>
                             @Ajax.ActionLink("Add To Bookmarks", "AddToBookmarks", new { repositoryId = repos.RepositoryID }, new AjaxOptions { HttpMethod = "POST"})

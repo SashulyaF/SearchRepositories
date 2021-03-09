@@ -7,7 +7,7 @@ namespace WebAppSearchGitHub.Models
         #region properties
         public List<GitHubReposModel> _repositories { get; set; } = new List<GitHubReposModel>();
 
-        public bool BookmarksExists {
+        public bool IsBookmarksExists {
             get {
                 return _repositories != null && _repositories.Count > 0;
             }

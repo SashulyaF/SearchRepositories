@@ -199,7 +199,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Bookmarks.cshtml" />
-    <Content Include="Views\Shared\BookmarksPartialView.cshtml" />
+    <Content Include="Views\Shared\PartialViews\_Bookmarks.cshtml" />
     <Content Include="Views\Error\Error404.cshtml" />
     <Content Include="Views\Error\Error500.cshtml" />
   </ItemGroup>
